@@ -1,0 +1,22 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: test-web-app
+  labels:
+    app.kubernetes.io/part-of: hello-world
+    carto.run/workload-name: test-web-app
+    app.kubernetes.io/component: run
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+    spec:
+      containers:
+        - name: workload
+          image: harbor.eks.vrabbi.cloud/demo/tap-gitops-test-web-app@sha256:b76cc16e2b2a982c85b941236d414da0581b7683905f7baf3eae545cc8c0a5a8
+          securityContext:
+            runAsUser: 1000
+      imagePullSecrets:
+        - name: registry-credentials
+
