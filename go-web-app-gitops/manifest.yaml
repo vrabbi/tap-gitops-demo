@@ -1,0 +1,22 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: go-web-app-gitops
+  labels:
+    app.kubernetes.io/part-of: hello-world
+    carto.run/workload-name: go-web-app-gitops
+    app.kubernetes.io/component: run
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+    spec:
+      containers:
+        - name: workload
+          image: harbor.eks.vrabbi.cloud/demo/tap-gitops-go-web-app-gitops@sha256:5c49e17363b82a0ab16ad57bcc2768200eeb63bb4b0ff96f728b5c309f81761f
+          securityContext:
+            runAsUser: 1000
+      imagePullSecrets:
+        - name: registry-credentials-gitops
+
