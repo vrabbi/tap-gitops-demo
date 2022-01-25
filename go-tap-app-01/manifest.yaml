@@ -1,0 +1,22 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: go-tap-app-01
+  labels:
+    app.kubernetes.io/part-of: hello-world
+    carto.run/workload-name: go-tap-app-01
+    app.kubernetes.io/component: run
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+    spec:
+      containers:
+        - name: workload
+          image: harbor.eks.vrabbi.cloud/demo/tap-gitops-go-tap-app-01@sha256:9da966f5f1c4eee925d2da18e39600ed4087a3c08c256806736fb799cb56d16b
+          securityContext:
+            runAsUser: 1000
+      imagePullSecrets:
+        - name: registry-credentials-gitops
+
