@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: workload
-          image: harbor.eks.vrabbi.cloud/demo/tap-gitops-go-tap-app-01@sha256:9da966f5f1c4eee925d2da18e39600ed4087a3c08c256806736fb799cb56d16b
+          image: harbor.eks.vrabbi.cloud/demo/tap-gitops-go-tap-app-01@sha256:c90d2904dc4331630b05d04d2f8ede12ad6cebf3e40a5b944a666e2b117da9bd
           securityContext:
             runAsUser: 1000
       imagePullSecrets:
