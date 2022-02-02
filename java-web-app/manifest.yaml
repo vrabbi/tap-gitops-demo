@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: java-web-app
+  labels:carto.run/workload-name: java-web-app
+    app.kubernetes.io/component: run
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+    spec:
+      containers:
+        - name: workload
+          image: harbor.vrabbi.cloud/workloads/oss-java-web-app@sha256:65b1a98553e53df55e28afde54b8b48fdf5952e2534455612329df7958875f87
+          securityContext:
+            runAsUser: 1000
+      imagePullSecrets:
+        - name: registry-credentials
+
