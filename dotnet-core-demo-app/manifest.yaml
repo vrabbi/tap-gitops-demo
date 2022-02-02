@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: dotnet-core-demo-app
+  labels:carto.run/workload-name: dotnet-core-demo-app
+    app.kubernetes.io/component: run
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+    spec:
+      containers:
+        - name: workload
+          image: harbor.vrabbi.cloud/workloads/oss-dotnet-core-demo-app@sha256:753e0ad329a7156019fb04093f026c9a8803fc33069348b198e8ac5e648bf1e4
+          securityContext:
+            runAsUser: 1000
+      imagePullSecrets:
+        - name: registry-credentials
+
