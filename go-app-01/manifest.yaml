@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: go-app-01
+  labels:carto.run/workload-name: go-app-01
+    app.kubernetes.io/component: run
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+    spec:
+      containers:
+        - name: workload
+          image: harbor.vrabbi.cloud/workloads/oss-go-app-01@sha256:a74762167f36638c1b6bc7bdd49cafd4529ac3e7f4c408d94df8e00ae5df551b
+          securityContext:
+            runAsUser: 1000
+      imagePullSecrets:
+        - name: registry-credentials
+
