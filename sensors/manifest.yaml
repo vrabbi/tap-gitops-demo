@@ -21,13 +21,10 @@ metadata:
     app.kubernetes.io/component: run
 spec:
   template:
-    metadata:
-      annotations:
-        autoscaling.knative.dev/minScale: 1
     spec:
       containers:
       - name: workload
-        image: harbor.vrabbi.cloud/workloads/oss-sensors@sha256:210e8f09ecde8a381e360cc5dda96c0e8b02740d1b9ef9e816c54ba488d60a6a
+        image: harbor.vrabbi.cloud/workloads/oss-sensors@sha256:5c927a8bdab2c8e5f4db542e05af94a6b16397b6477a6ace48482e3e3fc13590
         securityContext:
           runAsUser: 1000
       imagePullSecrets:
