@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: workload
-          image: harbor.vrabbi.cloud/workloads/oss-python-demo-app@sha256:6ab6e0ce55c1553dd55c4b654f8565a34febacd8ac26b4286f42f4bb674f2b2b
+          image: harbor.vrabbi.cloud/workloads/oss-python-demo-app@sha256:40600ac9073ba2b4c03ecfdd0f08c8050b5d2b9e337a6e2ca9e60fe14cef1dfc
           securityContext:
             runAsUser: 1000
       imagePullSecrets:
