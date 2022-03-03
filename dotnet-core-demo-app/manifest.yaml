@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: workload
-          image: harbor.vrabbi.cloud/workloads/oss-dotnet-core-demo-app@sha256:753e0ad329a7156019fb04093f026c9a8803fc33069348b198e8ac5e648bf1e4
+          image: harbor.vrabbi.cloud/workloads/oss-dotnet-core-demo-app@sha256:e2c181f5b7db0b290950c6bcfe6a8dfec9144e5ef2c1c527ff92c088b86577ee
           securityContext:
             runAsUser: 1000
       imagePullSecrets:
